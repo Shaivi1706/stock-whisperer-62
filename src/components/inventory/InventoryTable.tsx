@@ -1,0 +1,189 @@
+import { useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Search, Filter, Download, Edit3, Trash2 } from "lucide-react";
+
+interface InventoryItem {
+  id: string;
+  name: string;
+  quantity: number;
+  age: number;
+  price: number;
+  status: "healthy" | "at-risk" | "dead";
+  selected?: boolean;
+}
+
+const mockInventory: InventoryItem[] = [
+  { id: "1", name: "Classic Denim Jeans - Blue M", quantity: 45, age: 12, price: 79.99, status: "healthy" },
+  { id: "2", name: "Summer Cotton T-Shirt Pack", quantity: 23, age: 28, price: 29.99, status: "at-risk" },
+  { id: "3", name: "Winter Wool Jackets XL", quantity: 8, age: 52, price: 159.99, status: "dead" },
+  { id: "4", name: "Casual Sneakers White", quantity: 67, age: 5, price: 89.99, status: "healthy" },
+  { id: "5", name: "Leather Handbags Brown", quantity: 15, age: 31, price: 199.99, status: "at-risk" },
+  { id: "6", name: "Sports Shorts Navy", quantity: 3, age: 48, price: 39.99, status: "dead" }
+];
+
+export const InventoryTable = () => {
+  const [inventory, setInventory] = useState<InventoryItem[]>(mockInventory);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "healthy": return "bg-success text-success-foreground";
+      case "at-risk": return "bg-warning text-warning-foreground";
+      case "dead": return "bg-destructive text-destructive-foreground";
+      default: return "bg-muted text-muted-foreground";
+    }
+  };
+
+  const getStatusText = (status: string) => {
+    switch (status) {
+      case "healthy": return "📦 Healthy";
+      case "at-risk": return "⚠️ At Risk";
+      case "dead": return "💀 Dead Stock";
+      default: return status;
+    }
+  };
+
+  const handleSelectAll = (checked: boolean) => {
+    if (checked) {
+      setSelectedItems(inventory.map(item => item.id));
+    } else {
+      setSelectedItems([]);
+    }
+  };
+
+  const handleSelectItem = (id: string, checked: boolean) => {
+    if (checked) {
+      setSelectedItems([...selectedItems, id]);
+    } else {
+      setSelectedItems(selectedItems.filter(item => item !== id));
+    }
+  };
+
+  const filteredInventory = inventory.filter(item =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <Card className="glass-card p-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+        <div>
+          <h2 className="text-2xl font-bold text-foreground">
+            📦 Your Inventory
+          </h2>
+          <p className="text-muted-foreground">
+            Manage your stock with smart insights and bulk actions
+          </p>
+        </div>
+        <div className="flex gap-2">
+          <Button variant="outline" size="sm">
+            <Filter className="h-4 w-4 mr-2" />
+            Filter
+          </Button>
+          <Button variant="outline" size="sm">
+            <Download className="h-4 w-4 mr-2" />
+            Export
+          </Button>
+        </div>
+      </div>
+
+      {/* Search and Bulk Actions */}
+      <div className="flex flex-col sm:flex-row gap-4 mb-6">
+        <div className="relative flex-1">
+          <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+          <Input
+            placeholder="Search inventory..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="pl-10"
+          />
+        </div>
+        {selectedItems.length > 0 && (
+          <div className="flex gap-2">
+            <Button variant="outline" size="sm">
+              <Edit3 className="h-4 w-4 mr-2" />
+              Bulk Edit ({selectedItems.length})
+            </Button>
+            <Button variant="outline" size="sm">
+              <Trash2 className="h-4 w-4 mr-2" />
+              Delete Selected
+            </Button>
+          </div>
+        )}
+      </div>
+
+      {/* Table */}
+      <div className="overflow-x-auto">
+        <table className="w-full">
+          <thead>
+            <tr className="border-b border-border">
+              <th className="text-left p-3">
+                <Checkbox
+                  checked={selectedItems.length === filteredInventory.length}
+                  onCheckedChange={handleSelectAll}
+                />
+              </th>
+              <th className="text-left p-3 font-medium text-muted-foreground">Item Name</th>
+              <th className="text-left p-3 font-medium text-muted-foreground">Quantity</th>
+              <th className="text-left p-3 font-medium text-muted-foreground">Age (Days)</th>
+              <th className="text-left p-3 font-medium text-muted-foreground">Price</th>
+              <th className="text-left p-3 font-medium text-muted-foreground">Status</th>
+              <th className="text-left p-3 font-medium text-muted-foreground">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredInventory.map((item) => (
+              <tr key={item.id} className="border-b border-border/50 hover:bg-muted/30 transition-colors">
+                <td className="p-3">
+                  <Checkbox
+                    checked={selectedItems.includes(item.id)}
+                    onCheckedChange={(checked) => handleSelectItem(item.id, checked as boolean)}
+                  />
+                </td>
+                <td className="p-3">
+                  <span className="font-medium text-foreground">{item.name}</span>
+                </td>
+                <td className="p-3 text-foreground">{item.quantity}</td>
+                <td className="p-3">
+                  <span className={`font-medium ${
+                    item.age > 45 ? "text-destructive" : 
+                    item.age > 20 ? "text-warning" : 
+                    "text-success"
+                  }`}>
+                    {item.age}
+                  </span>
+                </td>
+                <td className="p-3 text-foreground font-medium">${item.price}</td>
+                <td className="p-3">
+                  <Badge className={getStatusColor(item.status)}>
+                    {getStatusText(item.status)}
+                  </Badge>
+                </td>
+                <td className="p-3">
+                  <div className="flex gap-1">
+                    <Button variant="ghost" size="sm">
+                      <Edit3 className="h-4 w-4" />
+                    </Button>
+                    <Button variant="ghost" size="sm">
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {filteredInventory.length === 0 && (
+        <div className="text-center py-8">
+          <p className="text-muted-foreground">No inventory items found matching your search.</p>
+        </div>
+      )}
+    </Card>
+  );
+};
