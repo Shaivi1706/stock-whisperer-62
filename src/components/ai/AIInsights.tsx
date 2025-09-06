@@ -116,11 +116,11 @@ export const AIInsights = () => {
               <div className="grid grid-cols-3 gap-4 text-sm">
                 <div>
                   <p className="text-muted-foreground">Original Value</p>
-                  <p className="font-semibold text-foreground">${bundle.originalValue}</p>
+                  <p className="font-semibold text-foreground">Rs {bundle.originalValue}</p>
                 </div>
                 <div>
                   <p className="text-muted-foreground">With {bundle.discountPercent}% Off</p>
-                  <p className="font-semibold text-success">${bundle.expectedRecovery}</p>
+                  <p className="font-semibold text-success">Rs {bundle.expectedRecovery}</p>
                 </div>
                 <div className="flex items-end justify-end">
                   <Button size="sm" className="bg-gradient-success hover:shadow-success">
