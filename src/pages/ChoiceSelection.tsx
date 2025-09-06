@@ -95,10 +95,3 @@ const ChoiceSelection = () => {
 
 export default ChoiceSelection;
 
-
-<Button 
-              onClick={() => navigate("/dashboard?tab=addinventory&mode=manual")}
-              variant="secondary"
-              className="w-full"
-              size="lg"
-            ></Button>

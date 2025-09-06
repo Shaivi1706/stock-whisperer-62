@@ -108,7 +108,7 @@ const Dashboard = () => {
                     I've found Rs 12,450 you can recover this week by liquidating slow-moving inventory.
                     Ready to turn dead stock into cash? 
                   </p>
-                  <Button className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white shadow-lg hover:shadow-green-500/30 transition-all duration-300">
+                  <Button onClick={() => setActiveTab("insights")}  className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white shadow-lg hover:shadow-green-500/30 transition-all duration-300">
                     Show Me How
                   </Button>
                 </div>
