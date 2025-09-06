@@ -237,7 +237,7 @@ export const AddInventoryForm = ({ switchToOCR }: AddInventoryFormProps) => {
     }
 
     console.log("Adding inventory record:", formData);
-    toast.success("📦 Inventory record added successfully!");
+    toast.success("Inventory record added successfully!");
     
     setFormData({
       itemName: "",
@@ -272,11 +272,11 @@ export const AddInventoryForm = ({ switchToOCR }: AddInventoryFormProps) => {
 
   return (
     <Card className="glass-card p-6">
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-2">
+      <div className="flex items-center justify-between mb-6 ">
+        <div className="flex items-center text-green-800 gap-2">
           <Package className="h-5 w-5 text-primary" />
-          <h2 className="text-xl font-semibold text-foreground">
-            ➕ Add New Inventory Item
+          <h2 className="text-xl font-semibold text-green-800">
+            Add New Inventory Item
           </h2>
         </div>
         <Button
@@ -297,7 +297,7 @@ export const AddInventoryForm = ({ switchToOCR }: AddInventoryFormProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Item Name */}
           <div className="space-y-2">
-            <Label htmlFor="itemName" className="text-foreground">
+            <Label htmlFor="itemName" className="text-green-800">
               Item Name *
             </Label>
             <Input
@@ -311,7 +311,7 @@ export const AddInventoryForm = ({ switchToOCR }: AddInventoryFormProps) => {
 
           {/* Category */}
           <div className="space-y-2">
-            <Label htmlFor="category" className="text-foreground">
+            <Label htmlFor="category" className="text-green-800">
               Category
             </Label>
             <Select onValueChange={(value) => handleInputChange("category", value)}>
@@ -319,20 +319,20 @@ export const AddInventoryForm = ({ switchToOCR }: AddInventoryFormProps) => {
                 <SelectValue placeholder="Select category" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="clothing">👕 Clothing</SelectItem>
-                <SelectItem value="electronics">📱 Electronics</SelectItem>
-                <SelectItem value="accessories">👜 Accessories</SelectItem>
-                <SelectItem value="home">🏠 Home & Garden</SelectItem>
-                <SelectItem value="books">📚 Books</SelectItem>
-                <SelectItem value="sports">⚽ Sports</SelectItem>
-                <SelectItem value="other">📦 Other</SelectItem>
+                <SelectItem value="clothing">Clothing</SelectItem>
+                <SelectItem value="electronics">Electronics</SelectItem>
+                <SelectItem value="accessories">Accessories</SelectItem>
+                <SelectItem value="home">Home & Garden</SelectItem>
+                <SelectItem value="books">Books</SelectItem>
+                <SelectItem value="sports">Sports</SelectItem>
+                <SelectItem value="other">Other</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           {/* Quantity */}
           <div className="space-y-2">
-            <Label htmlFor="quantity" className="text-foreground">
+            <Label htmlFor="quantity" className="text-green-800">
               Quantity *
             </Label>
             <Input
@@ -347,7 +347,7 @@ export const AddInventoryForm = ({ switchToOCR }: AddInventoryFormProps) => {
 
           {/* Buying Price */}
           <div className="space-y-2">
-            <Label htmlFor="buyingPrice" className="text-foreground">
+            <Label htmlFor="buyingPrice" className="text-green-800">
               Buying Price (Rs)
             </Label>
             <Input
@@ -362,7 +362,7 @@ export const AddInventoryForm = ({ switchToOCR }: AddInventoryFormProps) => {
 
           {/* Selling Price */}
           <div className="space-y-2">
-            <Label htmlFor="sellingPrice" className="text-foreground">
+            <Label htmlFor="sellingPrice" className="text-green-800">
               Selling Price (Rs) *
             </Label>
             <Input
@@ -377,7 +377,7 @@ export const AddInventoryForm = ({ switchToOCR }: AddInventoryFormProps) => {
 
           {/* Supplier */}
           <div className="space-y-2">
-            <Label htmlFor="supplier" className="text-foreground">
+            <Label htmlFor="supplier" className="text-green-800">
               Supplier
             </Label>
             <Input
@@ -391,7 +391,7 @@ export const AddInventoryForm = ({ switchToOCR }: AddInventoryFormProps) => {
 
           {/* Location */}
           <div className="space-y-2">
-            <Label htmlFor="location" className="text-foreground">
+            <Label htmlFor="location" className="text-green-800">
               Storage Location
             </Label>
             <Input
@@ -406,7 +406,7 @@ export const AddInventoryForm = ({ switchToOCR }: AddInventoryFormProps) => {
 
         {/* Description */}
         <div className="space-y-2">
-          <Label htmlFor="description" className="text-foreground">
+          <Label htmlFor="description" className="text-green-800">
             Description
           </Label>
           <Textarea
@@ -422,7 +422,7 @@ export const AddInventoryForm = ({ switchToOCR }: AddInventoryFormProps) => {
         <div className="flex justify-end pt-4">
           <Button 
             type="submit"
-            className="bg-gradient-primary hover:shadow-primary flex items-center"
+            className="bg-green-800 hover:shadow-primary flex items-center"
           >
             <Plus className="h-4 w-4 mr-2" />
             Add Inventory Item

@@ -43,7 +43,7 @@ export default function InventoryChatbot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "👋 Hi! I'm your AI inventory assistant. I can help you understand your stock data, identify opportunities, and answer questions about your inventory health. What would you like to know?",
+      text: "Hi! I'm your AI inventory assistant. I can help you understand your stock data, identify opportunities, and answer questions about your inventory health. What would you like to know?",
       sender: 'bot',
       timestamp: new Date()
     }
@@ -66,61 +66,61 @@ export default function InventoryChatbot() {
     
     // Inventory value questions
     if (message.includes('worth') || message.includes('value') || message.includes('total')) {
-      return `💰 Your total inventory is worth $${inventoryData.totalValue.toLocaleString()}. This represents a 2.4% increase from last period. Your highest-value items are the Leather Handbags at $199.99 each.`;
+      return `Your total inventory is worth $${inventoryData.totalValue.toLocaleString()}. This represents a 2.4% increase from last period. Your highest-value items are the Leather Handbags at $199.99 each.`;
     }
     
     // Dead stock questions
     if (message.includes('dead') || message.includes('old') || message.includes('stale')) {
       const deadItems = inventoryData.deadStockItems;
-      return `💀 You have ${deadItems.length} dead stock items:\n\n${deadItems.map(item => 
+      return `You have ${deadItems.length} dead stock items:\n\n${deadItems.map(item => 
         `• ${item.name}: ${item.quantity} units, ${item.age} days old ($${item.price} each)`
       ).join('\n')}\n\nThese items are over 45 days old and should be prioritized for clearance.`;
     }
     
     // Cash recovery questions
     if (message.includes('cash') || message.includes('recover') || message.includes('money')) {
-      return `💸 You can recover $${inventoryData.cashRecoverable.toLocaleString()} this week! This comes from liquidating slow-moving inventory. Focus on your dead stock items first - they're tying up the most capital.`;
+      return `You can recover $${inventoryData.cashRecoverable.toLocaleString()} this week! This comes from liquidating slow-moving inventory. Focus on your dead stock items first - they're tying up the most capital.`;
     }
     
     // At-risk items
     if (message.includes('risk') || message.includes('warning') || message.includes('danger')) {
       const riskItems = inventoryData.atRiskItems;
-      return `⚠️ ${inventoryData.stockAtRisk}% of your stock is at risk. Here are the key items to watch:\n\n${riskItems.map(item => 
+      return `${inventoryData.stockAtRisk}% of your stock is at risk. Here are the key items to watch:\n\n${riskItems.map(item => 
         `• ${item.name}: ${item.quantity} units, ${item.age} days old`
       ).join('\n')}\n\nConsider promotional pricing or bundling to move these items.`;
     }
     
     // Health overview
     if (message.includes('health') || message.includes('overview') || message.includes('summary')) {
-      return `📊 **Inventory Health Summary:**\n\n✅ Healthy: ${inventoryData.healthyItems.length} product lines\n⚠️ At Risk: ${inventoryData.atRiskItems.length} product lines\n💀 Dead Stock: ${inventoryData.deadStockItems.length} product lines\n\nGood news: Your healthy items include bestsellers like Denim Jeans (45 units) and Sneakers (67 units). Focus on clearing the dead stock to free up cash flow.`;
+      return `**Inventory Health Summary:**\n\n Healthy: ${inventoryData.healthyItems.length} product lines\n At Risk: ${inventoryData.atRiskItems.length} product lines\n💀 Dead Stock: ${inventoryData.deadStockItems.length} product lines\n\nGood news: Your healthy items include bestsellers like Denim Jeans (45 units) and Sneakers (67 units). Focus on clearing the dead stock to free up cash flow.`;
     }
     
     // Specific item questions
     if (message.includes('jeans') || message.includes('denim')) {
-      return `👖 Your Classic Denim Jeans are performing well! You have 45 units, only 12 days old, priced at $79.99. This is one of your healthy stock items with good turnover.`;
+      return `Your Classic Denim Jeans are performing well! You have 45 units, only 12 days old, priced at $79.99. This is one of your healthy stock items with good turnover.`;
     }
     
     if (message.includes('jacket') || message.includes('winter')) {
-      return `🧥 Your Winter Wool Jackets are dead stock - 8 units at 52 days old, $159.99 each. Consider a clearance sale or seasonal bundle to move these before they tie up more capital.`;
+      return `Your Winter Wool Jackets are dead stock - 8 units at 52 days old, $159.99 each. Consider a clearance sale or seasonal bundle to move these before they tie up more capital.`;
     }
     
     // Recommendations
     if (message.includes('recommend') || message.includes('suggest') || message.includes('advice')) {
-      return `💡 **My Recommendations:**\n\n1. 🔥 Immediate: Clear Winter Jackets & Sports Shorts (dead stock)\n2. ⚠️ This week: Promote T-Shirt Packs & Handbags (at-risk)\n3. 📈 Continue: Stock up on Jeans & Sneakers (high performers)\n\nThis strategy could recover $12,450 and improve your cash flow significantly.`;
+      return `**My Recommendations:**\n\n1. Immediate: Clear Winter Jackets & Sports Shorts (dead stock)\n2. This week: Promote T-Shirt Packs & Handbags (at-risk)\n3. Continue: Stock up on Jeans & Sneakers (high performers)\n\nThis strategy could recover $12,450 and improve your cash flow significantly.`;
     }
     
     // Help/features
     if (message.includes('help') || message.includes('what') || message.includes('can you')) {
-      return `🤖 I can help you with:\n\n• 📊 Inventory value and metrics\n• 💀 Dead stock identification\n• ⚠️ At-risk items analysis\n• 💰 Cash recovery opportunities\n• 📈 Performance insights\n• 💡 Strategic recommendations\n\nTry asking: "What's my inventory worth?" or "Show me dead stock"`;
+      return `I can help you with:\n\n• Inventory value and metrics\n• Dead stock identification\n• At-risk items analysis\n• Cash recovery opportunities\n• Performance insights\n• Strategic recommendations\n\nTry asking: "What's my inventory worth?" or "Show me dead stock"`;
     }
     
     // Greeting responses
     if (message.includes('hi') || message.includes('hello') || message.includes('hey')) {
-      return `👋 Hello! Ready to optimize your inventory? I can see you have $${inventoryData.totalValue.toLocaleString()} in total stock with some great opportunities to improve cash flow. What would you like to explore first?`;
+      return `Hello! Ready to optimize your inventory? I can see you have $${inventoryData.totalValue.toLocaleString()} in total stock with some great opportunities to improve cash flow. What would you like to explore first?`;
     }
     
     // Default response with suggestions
-    return `🤔 I'm not sure about that specific question, but I can help you with your inventory data! Try asking about:\n\n• Your inventory value\n• Dead stock items\n• Cash recovery opportunities\n• Items at risk\n• Overall inventory health\n\nWhat interests you most?`;
+    return `I'm not sure about that specific question, but I can help you with your inventory data! Try asking about:\n\n• Your inventory value\n• Dead stock items\n• Cash recovery opportunities\n• Items at risk\n• Overall inventory health\n\nWhat interests you most?`;
   };
 
   const handleSendMessage = () => {

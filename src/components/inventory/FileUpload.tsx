@@ -197,7 +197,7 @@ export const FileUpload = () => {
           setIsUploading(false);
           setUploadComplete(true);
           toast({
-            title: "Upload Complete! 🎉",
+            title: "Upload Complete!",
             description: "Your inventory has been processed and is ready to view.",
           });
           return 100;
@@ -235,8 +235,8 @@ export const FileUpload = () => {
     <Card className="glass-card p-6">
       <div className="flex items-center gap-2 mb-6">
         <Upload className="h-5 w-5 text-primary" />
-        <h2 className="text-xl font-bold text-foreground">
-          📤 Upload Your Inventory
+        <h2 className="text-xl font-bold text-green-800">
+          Upload Your Inventory
         </h2>
       </div>
 
@@ -251,8 +251,8 @@ export const FileUpload = () => {
               <div className="flex items-center gap-3">
                 <FileSpreadsheet className="h-8 w-8 text-primary" />
                 <div>
-                  <h3 className="font-semibold text-foreground">CSV/Excel Upload</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="font-semibold text-green-800">CSV/Excel Upload</h3>
+                  <p className="text-sm text-green-600">
                     Upload your existing inventory spreadsheets
                   </p>
                 </div>
@@ -266,8 +266,8 @@ export const FileUpload = () => {
               <div className="flex items-center gap-3">
                 <Camera className="h-8 w-8 text-success" />
                 <div>
-                  <h3 className="font-semibold text-foreground">Smart Invoice OCR</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="font-semibold text-green-800">Smart Invoice OCR</h3>
+                  <p className="text-sm text-green-600">
                     Snap photos of invoices - AI will extract products!
                   </p>
                 </div>
@@ -287,10 +287,10 @@ export const FileUpload = () => {
                 <Upload className="h-8 w-8 text-white" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
+                <h3 className="text-lg font-semibold text-green-800 mb-2">
                   Drop your files here, or click to browse
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-green-600">
                   Support for {mode === "ocr" ? "invoice images (OCR powered!)" : "CSV, Excel files"}
                 </p>
               </div>

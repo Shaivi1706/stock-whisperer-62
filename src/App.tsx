@@ -14,16 +14,19 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<ChoiceSelection />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      {/* Full-page gradient wrapper */}
+      <div className="min-h-screen w-full bg-gradient-to-br from-[#053721] to-[#E8EEA5]">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<ChoiceSelection />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </TooltipProvider>
   </QueryClientProvider>
 );
+
 
 export default App;

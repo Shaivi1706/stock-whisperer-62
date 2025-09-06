@@ -5,7 +5,7 @@ import { TrendingUp, TrendingDown, DollarSign, Package, AlertTriangle, Target } 
 const metrics = [
   {
     title: "Total Inventory Value",
-    value: "$147,230",
+    value: "Rs 147,230",
     change: "+2.4%",
     trend: "up",
     icon: DollarSign,
@@ -21,7 +21,7 @@ const metrics = [
   },
   {
     title: "Cash Recoverable",
-    value: "$12,450",
+    value: "Rs 12,450",
     change: "This Week",
     trend: "neutral",
     icon: Target,

@@ -41,9 +41,9 @@ export const InventoryTable = () => {
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case "healthy": return "📦 Healthy";
-      case "at-risk": return "⚠️ At Risk";
-      case "dead": return "💀 Dead Stock";
+      case "healthy": return "Healthy";
+      case "at-risk": return "At Risk";
+      case "dead": return "Dead Stock";
       default: return status;
     }
   };
@@ -72,10 +72,10 @@ export const InventoryTable = () => {
     <Card className="glass-card p-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-foreground">
-            📦 Your Inventory
+          <h2 className="text-2xl font-bold text-green-800">
+            Your Inventory
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-green-600">
             Manage your stock with smart insights and bulk actions
           </p>
         </div>
@@ -157,7 +157,7 @@ export const InventoryTable = () => {
                     {item.age}
                   </span>
                 </td>
-                <td className="p-3 text-foreground font-medium">${item.price}</td>
+                <td className="p-3 text-foreground font-medium">Rs {item.price}</td>
                 <td className="p-3">
                   <Badge className={getStatusColor(item.status)}>
                     {getStatusText(item.status)}
