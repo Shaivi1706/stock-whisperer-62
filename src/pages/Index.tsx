@@ -9,46 +9,21 @@ import { AIInsights } from "@/components/ai/AIInsights";
 import { FileUpload } from "@/components/inventory/FileUpload";
 import { TrendingUp, AlertTriangle, DollarSign, Package, Upload } from "lucide-react";
 import heroImage from "@/assets/dashboard-hero.jpg";
-
 const Index = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Header with friendly greeting */}
       <header className="glass-card border-b border-glass-border/50 p-6">
         <div className="container mx-auto">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-foreground">
-                Hi there! 👋 Here's your inventory health today
-              </h1>
-              <p className="text-muted-foreground mt-1">
-                Your business BFF is here to help you free up cash and sell smarter
-              </p>
+              <h1 className="text-3xl font-bold text-foreground">Here's your inventory health today</h1>
+              
             </div>
             <div className="hidden md:flex items-center gap-4">
-              <Button
-                variant={activeTab === "dashboard" ? "default" : "outline"}
-                onClick={() => setActiveTab("dashboard")}
-                className="transition-smooth"
-              >
-                📊 Dashboard
-              </Button>
-              <Button
-                variant={activeTab === "inventory" ? "default" : "outline"}
-                onClick={() => setActiveTab("inventory")}
-                className="transition-smooth"
-              >
-                📦 Inventory
-              </Button>
-              <Button
-                variant={activeTab === "insights" ? "default" : "outline"}
-                onClick={() => setActiveTab("insights")}
-                className="transition-smooth"
-              >
-                🧠 AI Insights
-              </Button>
+              <Button variant={activeTab === "dashboard" ? "default" : "outline"} onClick={() => setActiveTab("dashboard")} className="transition-smooth">Dashboard</Button>
+              <Button variant={activeTab === "inventory" ? "default" : "outline"} onClick={() => setActiveTab("inventory")} className="transition-smooth">Inventory</Button>
+              <Button variant={activeTab === "insights" ? "default" : "outline"} onClick={() => setActiveTab("insights")} className="transition-smooth">Insights</Button>
             </div>
           </div>
         </div>
@@ -56,8 +31,7 @@ const Index = () => {
 
       {/* Main Content */}
       <main className="container mx-auto p-6">
-        {activeTab === "dashboard" && (
-          <div className="space-y-8">
+        {activeTab === "dashboard" && <div className="space-y-8">
             <DashboardMetrics />
             
             {/* Quick Action Hero */}
@@ -79,11 +53,7 @@ const Index = () => {
                   </Button>
                 </div>
                 <div className="md:w-1/3 h-48 md:h-auto">
-                  <img 
-                    src={heroImage} 
-                    alt="AI Dashboard" 
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={heroImage} alt="AI Dashboard" className="w-full h-full object-cover" />
                 </div>
               </div>
             </Card>
@@ -97,41 +67,40 @@ const Index = () => {
                 </h3>
               </div>
               <div className="space-y-3">
-                {[
-                  { name: "Denim Jeans - Blue (Size M)", days: 8, risk: "high" },
-                  { name: "Summer T-Shirts Pack", days: 15, risk: "medium" },
-                  { name: "Winter Jackets XL", days: 22, risk: "low" }
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
+                {[{
+              name: "Denim Jeans - Blue (Size M)",
+              days: 8,
+              risk: "high"
+            }, {
+              name: "Summer T-Shirts Pack",
+              days: 15,
+              risk: "medium"
+            }, {
+              name: "Winter Jackets XL",
+              days: 22,
+              risk: "low"
+            }].map((item, index) => <div key={index} className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
                     <div>
                       <p className="font-medium text-foreground">{item.name}</p>
                       <p className="text-sm text-muted-foreground">
                         {item.days} days until dead stock
                       </p>
                     </div>
-                    <Badge 
-                      variant={item.risk === "high" ? "destructive" : item.risk === "medium" ? "secondary" : "outline"}
-                    >
+                    <Badge variant={item.risk === "high" ? "destructive" : item.risk === "medium" ? "secondary" : "outline"}>
                       {item.risk === "high" ? "🔥 Act Now" : item.risk === "medium" ? "⚠️ Watch" : "👀 Monitor"}
                     </Badge>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </Card>
-          </div>
-        )}
+          </div>}
 
-        {activeTab === "inventory" && (
-          <div className="space-y-6">
+        {activeTab === "inventory" && <div className="space-y-6">
             <FileUpload />
             <InventoryTable />
-          </div>
-        )}
+          </div>}
 
         {activeTab === "insights" && <AIInsights />}
       </main>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;

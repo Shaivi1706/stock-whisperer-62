@@ -3,73 +3,71 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Brain, DollarSign, TrendingUp, MessageCircle, Download, Zap } from "lucide-react";
-
-const cashRecoveryBundles = [
-  {
-    name: "Summer Clearance Bundle",
-    items: ["Summer T-Shirts", "Cotton Shorts", "Sandals"],
-    originalValue: 3240,
-    discountPercent: 25,
-    expectedRecovery: 2430,
-    confidence: 92
-  },
-  {
-    name: "Winter Overstock Pack",
-    items: ["Winter Jackets", "Wool Scarves", "Boots"],
-    originalValue: 5680,
-    discountPercent: 35,
-    expectedRecovery: 3692,
-    confidence: 88
-  },
-  {
-    name: "Accessories Quick Sale",
-    items: ["Leather Bags", "Belts", "Watches"],
-    originalValue: 2890,
-    discountPercent: 20,
-    expectedRecovery: 2312,
-    confidence: 95
-  }
-];
-
-const pricingExperiments = [
-  { discount: 20, recovery: 85, demand: "High", recommended: true },
-  { discount: 30, recovery: 78, demand: "Medium", recommended: false },
-  { discount: 40, recovery: 65, demand: "Low", recommended: false }
-];
-
-const actionCards = [
-  {
-    type: "restock",
-    title: "🚀 Restock Fast-Sellers",
-    description: "Classic Denim Jeans are flying off the shelves! Reorder 50 units.",
-    priority: "high",
-    impact: "+$3,200 potential revenue"
-  },
-  {
-    type: "stop",
-    title: "🛑 Stop Slow Movers",
-    description: "Winter Boots haven't sold in 45 days. Consider discontinuing.",
-    priority: "medium",
-    impact: "-$890 carrying cost saved"
-  },
-  {
-    type: "promote",
-    title: "📢 Promote Mid-Performers",
-    description: "Cotton T-Shirts need a boost. Try social media campaign.",
-    priority: "low",
-    impact: "+$1,500 estimated uplift"
-  }
-];
-
+const cashRecoveryBundles = [{
+  name: "Summer Clearance Bundle",
+  items: ["Summer T-Shirts", "Cotton Shorts", "Sandals"],
+  originalValue: 3240,
+  discountPercent: 25,
+  expectedRecovery: 2430,
+  confidence: 92
+}, {
+  name: "Winter Overstock Pack",
+  items: ["Winter Jackets", "Wool Scarves", "Boots"],
+  originalValue: 5680,
+  discountPercent: 35,
+  expectedRecovery: 3692,
+  confidence: 88
+}, {
+  name: "Accessories Quick Sale",
+  items: ["Leather Bags", "Belts", "Watches"],
+  originalValue: 2890,
+  discountPercent: 20,
+  expectedRecovery: 2312,
+  confidence: 95
+}];
+const pricingExperiments = [{
+  discount: 20,
+  recovery: 85,
+  demand: "High",
+  recommended: true
+}, {
+  discount: 30,
+  recovery: 78,
+  demand: "Medium",
+  recommended: false
+}, {
+  discount: 40,
+  recovery: 65,
+  demand: "Low",
+  recommended: false
+}];
+const actionCards = [{
+  type: "restock",
+  title: "🚀 Restock Fast-Sellers",
+  description: "Classic Denim Jeans are flying off the shelves! Reorder 50 units.",
+  priority: "high",
+  impact: "+$3,200 potential revenue"
+}, {
+  type: "stop",
+  title: "🛑 Stop Slow Movers",
+  description: "Winter Boots haven't sold in 45 days. Consider discontinuing.",
+  priority: "medium",
+  impact: "-$890 carrying cost saved"
+}, {
+  type: "promote",
+  title: "📢 Promote Mid-Performers",
+  description: "Cotton T-Shirts need a boost. Try social media campaign.",
+  priority: "low",
+  impact: "+$1,500 estimated uplift"
+}];
 export const AIInsights = () => {
-  return (
-    <div className="space-y-8">
+  return <div className="space-y-8">
       {/* Hero Section */}
       <Card className="glass-card p-8 bg-gradient-hero text-white relative overflow-hidden">
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-4">
             <Brain className="h-8 w-8" />
-            <h1 className="text-3xl font-bold">🧠 AI Insights & Recommendations</h1>
+            <h1 className="text-3xl font-bold">AI Insights & Recommendations</h1>
           </div>
           <p className="text-xl text-white/90 mb-6">
             Your business BFF has analyzed your inventory and found smart ways to recover cash and optimize sales!
@@ -79,7 +77,7 @@ export const AIInsights = () => {
               <Download className="h-4 w-4 mr-2" />
               Export Report
             </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white/10">
+            <Button variant="outline" className="border-white hover:bg-white/10 text-lime-500">
               <MessageCircle className="h-4 w-4 mr-2" />
               WhatsApp Me
             </Button>
@@ -96,14 +94,13 @@ export const AIInsights = () => {
             <DollarSign className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-foreground">💸 Free Cash Now</h2>
-            <p className="text-success font-medium">$8,434 recoverable this week</p>
+            <h2 className="text-2xl font-bold text-foreground">Free Cash Now</h2>
+            <p className="text-success font-medium">Rs 8,434 recoverable this week</p>
           </div>
         </div>
 
         <div className="grid gap-4">
-          {cashRecoveryBundles.map((bundle, index) => (
-            <div key={index} className="p-4 rounded-lg bg-success-light/50 border border-success/20">
+          {cashRecoveryBundles.map((bundle, index) => <div key={index} className="p-4 rounded-lg bg-success-light/50 border border-success/20">
               <div className="flex justify-between items-start mb-3">
                 <div>
                   <h3 className="font-semibold text-foreground">{bundle.name}</h3>
@@ -132,8 +129,7 @@ export const AIInsights = () => {
                   </Button>
                 </div>
               </div>
-            </div>
-          ))}
+            </div>)}
         </div>
       </Card>
 
@@ -141,7 +137,7 @@ export const AIInsights = () => {
       <Card className="glass-card p-6">
         <div className="flex items-center gap-2 mb-6">
           <TrendingUp className="h-5 w-5 text-primary" />
-          <h2 className="text-xl font-bold text-foreground">📊 Dynamic Pricing Sweet Spot</h2>
+          <h2 className="text-xl font-bold text-foreground">Dynamic Pricing Sweet Spot</h2>
         </div>
         
         <p className="text-muted-foreground mb-6">
@@ -149,22 +145,13 @@ export const AIInsights = () => {
         </p>
 
         <div className="grid gap-4">
-          {pricingExperiments.map((experiment, index) => (
-            <div key={index} className={`p-4 rounded-lg border ${
-              experiment.recommended 
-                ? "bg-primary/5 border-primary/20" 
-                : "bg-muted/30 border-border/50"
-            }`}>
+          {pricingExperiments.map((experiment, index) => <div key={index} className={`p-4 rounded-lg border ${experiment.recommended ? "bg-primary/5 border-primary/20" : "bg-muted/30 border-border/50"}`}>
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-3">
                   <span className="text-lg font-bold text-foreground">
                     {experiment.discount}% Discount
                   </span>
-                  {experiment.recommended && (
-                    <Badge className="bg-primary text-primary-foreground">
-                      ⭐ AI Recommended
-                    </Badge>
-                  )}
+                  {experiment.recommended && <Badge className="bg-primary text-primary-foreground">AI Recommended</Badge>}
                 </div>
                 <div className="text-right">
                   <p className="font-semibold text-foreground">{experiment.recovery}% Recovery</p>
@@ -172,23 +159,16 @@ export const AIInsights = () => {
                 </div>
               </div>
               <Progress value={experiment.recovery} className="h-2" />
-            </div>
-          ))}
+            </div>)}
         </div>
       </Card>
 
       {/* Action Cards */}
       <div className="grid md:grid-cols-3 gap-6">
         {actionCards.map((action, index) => {
-          const isPriority = action.priority === "high";
-          const isMedium = action.priority === "medium";
-          
-          return (
-            <Card key={index} className={`glass-card p-6 hover-lift ${
-              isPriority ? "border-success/20" : 
-              isMedium ? "border-warning/20" : 
-              "border-border"
-            }`}>
+        const isPriority = action.priority === "high";
+        const isMedium = action.priority === "medium";
+        return <Card key={index} className={`glass-card p-6 hover-lift ${isPriority ? "border-success/20" : isMedium ? "border-warning/20" : "border-border"}`}>
               <div className="space-y-4">
                 <div>
                   <h3 className="font-semibold text-foreground mb-2">
@@ -201,14 +181,8 @@ export const AIInsights = () => {
                 
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
-                    <Badge variant={
-                      isPriority ? "destructive" : 
-                      isMedium ? "secondary" : 
-                      "outline"
-                    }>
-                      {isPriority ? "🔥 High Priority" : 
-                       isMedium ? "⚠️ Medium" : 
-                       "💡 Consider"}
+                    <Badge variant={isPriority ? "destructive" : isMedium ? "secondary" : "outline"}>
+                      {isPriority ? "🔥 High Priority" : isMedium ? "⚠️ Medium" : "💡 Consider"}
                     </Badge>
                   </div>
                   
@@ -216,19 +190,13 @@ export const AIInsights = () => {
                     {action.impact}
                   </p>
                   
-                  <Button 
-                    variant={isPriority ? "default" : "outline"} 
-                    size="sm" 
-                    className="w-full"
-                  >
+                  <Button variant={isPriority ? "default" : "outline"} size="sm" className="w-full">
                     Take Action
                   </Button>
                 </div>
               </div>
-            </Card>
-          );
-        })}
+            </Card>;
+      })}
       </div>
-    </div>
-  );
+    </div>;
 };
