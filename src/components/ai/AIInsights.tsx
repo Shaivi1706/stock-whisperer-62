@@ -67,7 +67,7 @@ export const AIInsights = () => {
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-4">
             <Brain className="h-8 w-8" />
-            <h1 className="text-3xl font-bold">AI Insights & Recommendations</h1>
+            
           </div>
           <p className="text-xl text-white/90 mb-6">
             Your business BFF has analyzed your inventory and found smart ways to recover cash and optimize sales!
@@ -116,11 +116,11 @@ export const AIInsights = () => {
               <div className="grid grid-cols-3 gap-4 text-sm">
                 <div>
                   <p className="text-muted-foreground">Original Value</p>
-                  <p className="font-semibold text-foreground">Rs {bundle.originalValue}</p>
+                  <p className="font-semibold text-foreground">${bundle.originalValue}</p>
                 </div>
                 <div>
                   <p className="text-muted-foreground">With {bundle.discountPercent}% Off</p>
-                  <p className="font-semibold text-success">Rs {bundle.expectedRecovery}</p>
+                  <p className="font-semibold text-success">${bundle.expectedRecovery}</p>
                 </div>
                 <div className="flex items-end justify-end">
                   <Button size="sm" className="bg-gradient-success hover:shadow-success">
