@@ -7,6 +7,7 @@ import { DashboardMetrics } from "@/components/dashboard/DashboardMetrics";
 import { InventoryTable } from "@/components/inventory/InventoryTable";
 import { AIInsights } from "@/components/ai/AIInsights";
 import { FileUpload } from "@/components/inventory/FileUpload";
+import { AddInventoryForm } from "@/components/inventory/AddInventoryForm";
 import { TrendingUp, AlertTriangle, DollarSign, Package, Upload } from "lucide-react";
 import heroImage from "@/assets/dashboard-hero.jpg";
 const Index = () => {
@@ -95,6 +96,7 @@ const Index = () => {
           </div>}
 
         {activeTab === "inventory" && <div className="space-y-6">
+            <AddInventoryForm />
             <FileUpload />
             <InventoryTable />
           </div>}
