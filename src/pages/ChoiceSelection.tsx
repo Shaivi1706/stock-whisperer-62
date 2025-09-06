@@ -43,7 +43,7 @@ const ChoiceSelection = () => {
               </div>
             </div>
             <Button 
-              onClick={() => navigate("/dashboard?tab=inventory&mode=ocr")}
+              onClick={() => navigate("/dashboard?tab=addinventory&mode=ocr")}
               className="w-full bg-gradient-primary hover:shadow-primary text-primary-foreground"
               size="lg"
             >
@@ -75,7 +75,7 @@ const ChoiceSelection = () => {
               </div>
             </div>
             <Button 
-              onClick={() => navigate("/dashboard?tab=inventory&mode=manual")}
+              onClick={() => navigate("/dashboard?tab=addinventory&mode=manual")}
               variant="secondary"
               className="w-full"
               size="lg"

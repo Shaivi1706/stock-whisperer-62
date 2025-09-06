@@ -10,11 +10,13 @@ import { FileUpload } from "@/components/inventory/FileUpload";
 import { AddInventoryForm } from "@/components/inventory/AddInventoryForm";
 import { TrendingUp, AlertTriangle, DollarSign, Package, Upload } from "lucide-react";
 import heroImage from "@/assets/dashboard-hero.jpg";
+import InventoryChatbot from './InventoryChatbot/page';
 
 const Dashboard = () => {
   const [searchParams] = useSearchParams();
   const [activeTab, setActiveTab] = useState("dashboard");
   const [inventoryMode, setInventoryMode] = useState<"ocr" | "manual" | null>(null);
+  
 
   useEffect(() => {
     const tab = searchParams.get("tab");
@@ -39,7 +41,8 @@ const Dashboard = () => {
             </div>
             <div className="hidden md:flex items-center gap-4">
               <Button variant={activeTab === "dashboard" ? "default" : "outline"} onClick={() => setActiveTab("dashboard")} className="transition-smooth">Dashboard</Button>
-              <Button variant={activeTab === "inventory" ? "default" : "outline"} onClick={() => setActiveTab("inventory")} className="transition-smooth">Inventory</Button>
+              <Button variant={activeTab === "addinventory" ? "default" : "outline"} onClick={() => setActiveTab("addinventory")} className="transition-smooth">Add Inventory</Button>
+              <Button variant={activeTab === "seeinventory" ? "default" : "outline"} onClick={() => setActiveTab("seeinventory")} className="transition-smooth">See Inventory</Button>
               <Button variant={activeTab === "insights" ? "default" : "outline"} onClick={() => setActiveTab("insights")} className="transition-smooth">Insights</Button>
             </div>
           </div>
@@ -107,21 +110,30 @@ const Dashboard = () => {
           </div>
         )}
 
-        {activeTab === "inventory" && (
+        {activeTab === "seeinventory" && (
           <div className="space-y-6">
-            {inventoryMode === "manual" && <AddInventoryForm />}
-            {inventoryMode === "ocr" && <FileUpload />}
-            {!inventoryMode && (
-              <>
-                <AddInventoryForm />
-                <FileUpload />
-              </>
-            )}
             <InventoryTable />
           </div>
         )}
 
+        
+            {activeTab === "addinventory" && (
+              <>
+                {inventoryMode === "manual" && <AddInventoryForm />}
+                {inventoryMode === "ocr" && <FileUpload />}
+                {!inventoryMode && (
+                <>
+                  <AddInventoryForm />
+                  <FileUpload />
+                </>
+              )}
+              </>
+        )}
+
         {activeTab === "insights" && <AIInsights />}
+
+        <InventoryChatbot />
+
       </main>
     </div>
   );
